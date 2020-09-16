@@ -10,7 +10,7 @@ export class World {
 
   getPlayerGround() {
     for(const object of this.objects) {
-      if(object.isPointInside([this.player.position[0], this.player.position[1] + 10])) return object;
+      if(object.isPointInside([this.player.position[0], this.player.position[1] + 1])) return object;
     }
 
     return null;
@@ -59,4 +59,5 @@ export class WorldObject {
 }
 
 export const objectProcessors = [];
-export let world = new World();
+export let world = null;
+export const setWorld = value => world = value;
