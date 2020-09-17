@@ -31,8 +31,8 @@ addEventListener("keydown", e => {
   if(e.key == "F6") debug = !debug;
 })
 
-async function downloadWorld() {
-  const worldFile = await fetch("world.json");
+async function downloadWorld(url) {
+  const worldFile = await fetch(url);
   return worldFile.json();
 }
 
@@ -71,6 +71,8 @@ async function loop() {
       }
     }
   }
+
+  setTimeout(loop, 100);
 }
 
-setInterval(loop, 100);
+loop();
