@@ -1,6 +1,6 @@
 import {objectProcessors, world, World, WorldObject, setWorld} from "/library.js"
 import {keyListeners, doInput, mousePosition} from "/input.js"
-import {renderWorld, renderPlayer, clearScreen} from "/render.js"
+import {renderPlayer, clearScreen} from "/render.js"
 
 let debug = false;
 
@@ -67,7 +67,6 @@ async function loop() {
     objects.forEach(processor.function);
   }
 
-  renderWorld(world);
   doInput();
   fall();
 
