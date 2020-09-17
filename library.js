@@ -22,7 +22,6 @@ export class World {
 
 
   getObjectsWithClasses(classes) {
-    console.log(this.objects)
     return this.objects.filter(
       it => classes.every(
         className => it.classes.includes(className)));

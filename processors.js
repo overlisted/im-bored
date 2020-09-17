@@ -2,7 +2,7 @@ import {objectProcessors} from "/library.js";
 
 objectProcessors.push({
   classes: ["moving"],
-  function: object => {console.log(object); object.move([1, 0])}
+  function: object => object.move([1, 0])
 });
 
 objectProcessors.push({
