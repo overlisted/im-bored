@@ -47,7 +47,7 @@ async function loop() {
     let json;
     try {
       const request = await fetch(
-        prompt("Enter world URL", document.location + "world.json")
+        prompt("Enter world URL", document.location + "examples/1.json")
       );
 
       if(!request.ok) throw new Error(request.statusText);
