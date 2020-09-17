@@ -44,7 +44,7 @@ async function loop() {
   clearScreen();
 
   if(!world) {
-    const json = await downloadWorld();
+    const json = await downloadWorld(prompt("Enter world URL", document.location + "world.json"));
 
     setWorld(new World());
     world.player = json.player;
