@@ -44,11 +44,22 @@ async function loop() {
   clearScreen();
 
   if(!world) {
-    const json = await downloadWorld(prompt("Enter world URL", document.location + "world.json"));
+    let json;
+    try {
+      const request = await fetch(
+        prompt("Enter world URL", document.location + "world.json")
+      );
 
-    setWorld(new World());
-    world.player = json.player;
-    world.objects = json.objects.map(it => new WorldObject(it, world));
+      if(!request.ok) throw new Error(request.statusText);
+      json = await request.json();
+
+      setWorld(new World());
+      world.player = json.player;
+      world.objects = json.objects.map(it => new WorldObject(it, world));
+    } catch(e) {
+      alert(e.message);
+      return;
+    }
   }
 
   if(!debug) {
