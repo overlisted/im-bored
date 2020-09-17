@@ -62,17 +62,15 @@ async function loop() {
     }
   }
 
-  if(!debug) {
-    for(const processor of objectProcessors) {
-      const objects = world.getObjectsWithClasses(processor.classes);
-      objects.forEach(processor.function);
-    }
-
-    doInput();
-    fall();
+  for(const processor of objectProcessors) {
+    const objects = world.getObjectsWithClasses(processor.classes);
+    objects.forEach(processor.function);
   }
 
   renderWorld(world);
+  doInput();
+  fall();
+
   renderPlayer(world.player);
 
   if(debug) {
