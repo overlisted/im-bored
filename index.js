@@ -1,7 +1,6 @@
 import {objectProcessors, world, World, WorldObject, setWorld} from "/library.js"
 import {keyListeners, doInput} from "/input.js"
-
-const canvas = document.getElementById("the");
+import {renderWorld, renderPlayer, clearScreen} from "/render.js"
 
 keyListeners.push({
   keys: ["d"],
@@ -26,39 +25,17 @@ keyListeners.push({
   }
 });
 
-function applySize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-window.addEventListener("resize", applySize);
-applySize();
-
-const ctx = canvas.getContext("2d");
-
 async function downloadWorld() {
   const worldFile = await fetch("world.json");
   return worldFile.json();
-}
-
-function renderWorld(ctx) {
-  for(const object of world.objects) {
-    ctx.fillStyle = object.color;
-    ctx.fillRect(object.start[0] * 10, object.start[1] * 10, object.size[0] * 10, object.size[1] * 10);
-  }
 }
 
 function fall() {
   world.movePlayer([world.player.position[0], world.player.position[1] + 1]);
 }
 
-function renderPlayer(ctx) {
-  ctx.fillStyle = "#AA0077";
-  ctx.fillRect(world.player.position[0] * 10, world.player.position[1] * 10, 10, -10);
-}
-
 async function loop() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  clearScreen();
 
   if(!world) {
     const json = await downloadWorld();
@@ -73,9 +50,9 @@ async function loop() {
   }
 
   doInput();
-  renderWorld(ctx);
+  renderWorld(world);
   fall();
-  renderPlayer(ctx);
+  renderPlayer(world.player);
 }
 
 setInterval(loop, 100);
