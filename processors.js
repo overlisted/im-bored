@@ -1,12 +1,12 @@
 import {objectProcessors} from "/library.js";
 
 objectProcessors.push({
-  id: "moving",
-  function: object => object.move([1, 0])
+  classes: ["moving"],
+  function: object => {console.log(object); object.move([1, 0])}
 });
 
 objectProcessors.push({
-  id: "trap",
+  classes: ["trap"],
   function: object => {
     if(object.world.getPlayerGround() == object) object.start = [-100, -100];
   }

@@ -64,8 +64,8 @@ async function loop() {
 
   if(!debug) {
     for(const processor of objectProcessors) {
-      const object = world.getObjectById(processor.id);
-      if(object != null) processor.function(object);
+      const objects = world.getObjectsWithClasses(processor.classes);
+      objects.forEach(processor.function);
     }
 
     doInput();

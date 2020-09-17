@@ -16,22 +16,28 @@ export class World {
     return null;
   }
 
-  getObjectById(id) {
-    for(const object of this.objects) if(object.id == id) return object;
+  getObjectsWithClass(className) {
+    return this.objects.filter(it => it.classes.includes(className));
+  }
 
-    return null;
+
+  getObjectsWithClasses(classes) {
+    console.log(this.objects)
+    return this.objects.filter(
+      it => classes.every(
+        className => it.classes.includes(className)));
   }
 }
 
 export class WorldObject {
-  id;
+  classes;
   start;
   size;
   color;
   world;
 
   constructor(json, world) {
-    this.id = json.id;
+    this.classes = json.classes || [];
     this.start = json.start;
     this.size = json.size;
     this.color = json.color;
