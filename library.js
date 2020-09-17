@@ -20,7 +20,6 @@ export class World {
     return this.objects.filter(it => it.classes.includes(className));
   }
 
-
   getObjectsWithClasses(classes) {
     return this.objects.filter(
       it => classes.every(
@@ -29,17 +28,11 @@ export class World {
 }
 
 export class WorldObject {
-  classes;
-  start;
-  size;
-  color;
+  classes = [];
   world;
 
   constructor(json, world) {
-    this.classes = json.classes || [];
-    this.start = json.start;
-    this.size = json.size;
-    this.color = json.color;
+    Object.assign(this, json);
     this.world = world;
   }
 
