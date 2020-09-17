@@ -1,6 +1,8 @@
 import {objectProcessors, world, World, WorldObject, setWorld} from "/library.js"
-import {keyListeners, doInput} from "/input.js"
+import {keyListeners, doInput, mousePosition} from "/input.js"
 import {renderWorld, renderPlayer, clearScreen} from "/render.js"
+
+let debug = false;
 
 keyListeners.push({
   keys: ["d"],
@@ -25,6 +27,10 @@ keyListeners.push({
   }
 });
 
+addEventListener("keydown", e => {
+  if(e.key == "F6") debug = !debug;
+})
+
 async function downloadWorld() {
   const worldFile = await fetch("world.json");
   return worldFile.json();
@@ -45,14 +51,26 @@ async function loop() {
     world.objects = json.objects.map(it => new WorldObject(it, world));
   }
 
-  for(const processor of objectProcessors) {
-    processor.function(world.getObjectById(processor.id));
+  if(!debug) {
+    for(const processor of objectProcessors) {
+      const object = world.getObjectById(processor.id);
+      if(object != null) processor.function(object);
+    }
+
+    doInput();
+    fall();
   }
 
-  doInput();
   renderWorld(world);
-  fall();
   renderPlayer(world.player);
+
+  if(debug) {
+    for(const object of world.objects) {
+      if(object.isPointInside([mousePosition[0] / 10, mousePosition[1] / 10])) {
+        console.debug(object);
+      }
+    }
+  }
 }
 
 setInterval(loop, 100);
