@@ -56,6 +56,7 @@ async function loop() {
       setWorld(new World());
       world.player = json.player;
       world.objects = json.objects.map(it => new WorldObject(it, world));
+      json.scripts.forEach(it => import(it));
     } catch(e) {
       alert(e.message);
       return;

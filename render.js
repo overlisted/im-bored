@@ -1,3 +1,5 @@
+import {objectProcessors} from "/library.js";
+
 const canvas = document.getElementById("the");
 export const ctx = canvas.getContext("2d");
 
@@ -17,3 +19,16 @@ export function renderPlayer(player) {
 export function clearScreen() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+objectProcessors.push({
+  classes: ["block"],
+  function: object => {
+    ctx.fillStyle = object.color;
+    ctx.fillRect(
+      object.start[0] * 10,
+      object.start[1] * 10,
+      object.size[0] * 10,
+      object.size[1] * 10
+    );
+  }
+});

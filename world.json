@@ -8,5 +8,8 @@
     {"classes": ["block"], "start": [22, 7], "size": [2, 2], "color": "#55BB00"},
     {"classes": ["block", "trap"], "start": [1, 12], "size": [8, 2], "color": "#88AA44"},
     {"classes": ["block", "moving"], "vector": [1, 0], "start": [13, 4], "size": [3, 1], "color": "#0033AA"}
+  ],
+  "scripts": [
+    "/world.js"
   ]
 }
