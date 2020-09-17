@@ -15,12 +15,12 @@ objectProcessors.push({
 });
 
 objectProcessors.push({
-  classes: ["moving"],
+  classes: ["block", "moving"],
   function: object => object.move(object.vector)
 });
 
 objectProcessors.push({
-  classes: ["trap"],
+  classes: ["block", "trap"],
   function: object => {
     if(object.world.getPlayerGround() == object) object.size = [0, 0]
   }
