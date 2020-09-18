@@ -20,6 +20,7 @@ keyListeners.push({
   keys: ["n"],
   function: () => {
     world.objects.push(new WorldObject({
+      classes: ["block"],
       start: [world.player.position[0], world.player.position[1] + 1],
       size: [2, 2],
       color: "#666"
