@@ -32,3 +32,13 @@ objectProcessors.push({
     );
   }
 });
+
+objectProcessors.push({
+  classes: ["text"],
+  function: object => {
+    ctx.font = object.font;
+    ctx.fillStyle = object.color;
+    ctx.textAlign = object.align;
+    ctx.fillText(object.text, object.position[0] * 10, object.position[1] * 10);
+  }
+});

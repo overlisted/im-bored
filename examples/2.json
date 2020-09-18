@@ -3,8 +3,10 @@
     "position": [5, 0]
   },
   "objects": [
+    {"classes": ["text"], "position": [12, 10], "font": "20px Helvetica", "color": "#BBBB00", "text": "Step on the yellow block to win!"},
     {"classes": ["block"], "start": [4, 4], "size": [8, 2], "color": "#555555"},
     {"classes": ["block", "moving"], "max": [31, 4], "vector": [1, 0], "start": [12, 4], "size": [4, 2], "color": "#55BB77"},
+    {"classes": ["text"], "position": [10, 3], "font": "20px Helvetica", "color": "#55BB77", "text": "This green thing can move you"},
     {"classes": ["block"], "start": [35, 4], "size": [5, 2], "color": "#555555"},
     {"classes": ["block", "victory"], "start": [40, 8], "size": [2, 2], "color": "#FFFF00"}
   ],
