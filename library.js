@@ -37,6 +37,7 @@ export class WorldObject {
   }
 
   isPointInside(point) {
+    if(!this.classes.includes("block")) return false;
     const a = point[0] >= this.start[0];
     const b = point[0] < this.start[0] + this.size[0];
     const c = point[1] > this.start[1];
