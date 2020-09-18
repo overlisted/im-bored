@@ -3,10 +3,9 @@ import {objectProcessors} from "/library.js";
 objectProcessors.push({
   classes: ["block", "moving"],
   function: object => {
-    if(
-      object.world.getPlayerGround() == object
-      && object.max > object.start
-    ) object.move(object.vector);
+    if(object.world.getPlayerGround() == object && object.max > object.start) {
+      object.move(object.vector);
+    }
   }
 });
 
