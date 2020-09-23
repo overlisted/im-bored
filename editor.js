@@ -18,7 +18,10 @@ keyListeners.push({
   function: () => {
     world.objects.push(new WorldObject({
       classes: ["block"],
-      start: [mousePosition[0] / 10, mousePosition[1] / 10],
+      start: [
+        Math.round(mousePosition[0] / 10),
+        Math.round(mousePosition[1] / 10)
+      ],
       size: [2, 2],
       color: `rgb(${randomMax(255)}, ${randomMax(255)}, ${randomMax(255)})`
     }, world));
