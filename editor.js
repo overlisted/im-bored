@@ -1,8 +1,10 @@
 import {renderPlayer, clearScreen} from "/render.js"
-import {objectProcessors, world} from "/library.js"
+import {objectProcessors, world, setWorld, World, WorldObject} from "/library.js"
 
 export default async function loop() {
   clearScreen();
+
+  if(!world) setWorld(new World());
 
   for(const processor of objectProcessors) {
     const objects = world.getObjectsWithClasses(processor.classes);
