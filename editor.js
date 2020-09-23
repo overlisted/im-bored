@@ -1,4 +1,4 @@
-import {renderPlayer, clearScreen} from "/render.js"
+import {clearScreen} from "/render.js"
 import {objectProcessors, world, setWorld, World, WorldObject} from "/library.js"
 
 export default async function loop() {
