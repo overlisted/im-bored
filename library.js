@@ -1,6 +1,6 @@
 export class World {
-  player = {};
-  objects;
+  player = {position: [0, 0]};
+  objects = [];
 
   movePlayer(newPosition) {
     if(!this.objects.some(object => object.isPointInside(newPosition))) {
